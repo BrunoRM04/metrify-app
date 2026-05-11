@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 import {
   IconoAjustes,
   IconoBiblioteca,
@@ -12,7 +12,11 @@ import {
 import { InicioVista } from './secciones/inicio/InicioVista'
 import { AnalisisIAVista } from './secciones/analisisIA/AnalisisIAVista'
 import { PanelesVista } from './secciones/paneles/PanelesVista'
+import { PlantillasVista } from './secciones/plantillas/PlantillasVista'
 import { ProyectosVista } from './secciones/proyectos/ProyectosVista'
+import { ReportesVista } from './secciones/reportes/ReportesVista'
+import { BibliotecaVista } from './secciones/biblioteca/BibliotecaVista'
+import { ConfiguracionVista } from './secciones/configuracion/ConfiguracionVista'
 import './App.css'
 
 type ItemMenu = {
@@ -42,6 +46,23 @@ function App() {
     { id: 'biblioteca', etiqueta: 'Biblioteca', icono: <IconoBiblioteca /> },
     { id: 'configuracion', etiqueta: 'Configuracion', icono: <IconoAjustes /> },
   ]
+
+  useEffect(() => {
+    const etiquetaPorSector: Record<string, string> = {
+      inicio: 'Inicio',
+      proyectos: 'Proyectos',
+      'analisis-ia': 'Analisis IA',
+      paneles: 'Dashboards',
+      reportes: 'Reportes',
+      plantillas: 'Plantillas',
+      biblioteca: 'Biblioteca',
+      configuracion: 'Configuracion',
+    }
+
+    const etiquetaActiva = etiquetaPorSector[itemActivo] ?? 'Metrify App'
+
+    document.title = `${etiquetaActiva} - Metrify App`
+  }, [itemActivo])
 
 
   const renderizarItem = (item: ItemMenu) => {
@@ -98,7 +119,11 @@ function App() {
         {itemActivo === 'proyectos' && <ProyectosVista />}
         {itemActivo === 'analisis-ia' && <AnalisisIAVista />}
         {itemActivo === 'paneles' && <PanelesVista />}
-        {itemActivo !== 'inicio' && itemActivo !== 'proyectos' && itemActivo !== 'analisis-ia' && itemActivo !== 'paneles' && (
+        {itemActivo === 'reportes' && <ReportesVista />}
+        {itemActivo === 'plantillas' && <PlantillasVista />}
+        {itemActivo === 'biblioteca' && <BibliotecaVista />}
+        {itemActivo === 'configuracion' && <ConfiguracionVista />}
+        {itemActivo !== 'inicio' && itemActivo !== 'proyectos' && itemActivo !== 'analisis-ia' && itemActivo !== 'paneles' && itemActivo !== 'reportes' && itemActivo !== 'plantillas' && itemActivo !== 'biblioteca' && itemActivo !== 'configuracion' && (
           <div className="inicio-panel__placeholder">Seccion en preparacion.</div>
         )}
       </section>

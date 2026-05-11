@@ -8,39 +8,26 @@
   top: -28px;
   z-index: 8;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
+  align-items: center;
+  gap: 14px;
   background: var(--color-base);
   border-bottom: 1px solid color-mix(in srgb, var(--color-acento) 35%, transparent);
   padding: 14px 0;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .analisis-ia__topbar-izq {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
 }
 
 .analisis-ia__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-acento);
+  display: none;
 }
 
 .analisis-ia__eyebrow-punto {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--color-acento);
-  animation: analisis-ia-pulso 2s ease-in-out infinite;
-  flex-shrink: 0;
+  display: none;
 }
 
 @keyframes analisis-ia-pulso {
@@ -52,6 +39,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 700;
+  color: var(--color-claro);
 }
 
 .analisis-ia__acento {
@@ -61,9 +49,7 @@
 .analisis-ia__subtitulo {
   margin: 2px 0 0;
   font-size: 13px;
-  color: color-mix(in srgb, var(--color-claro) 55%, transparent);
-  max-width: 460px;
-  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-claro) 62%, transparent);
 }
 
 .analisis-ia__topbar-acciones {
@@ -71,6 +57,7 @@
   gap: 10px;
   flex-shrink: 0;
   align-items: center;
+  margin-left: auto;
 }
 
 /* ─── Botones ─── */
