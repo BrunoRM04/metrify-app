@@ -64,6 +64,13 @@ function App() {
     document.title = `${etiquetaActiva} - Metrify App`
   }, [itemActivo])
 
+  useEffect(() => {
+    fetch('http://localhost:3001/api/usuarios')
+      .then((res) => res.json())
+      .then((data) => console.log('Usuarios desde backend:', data))
+      .catch((error) => console.error('No se pudo conectar con el backend:', error))
+  }, [])
+
 
   const renderizarItem = (item: ItemMenu) => {
     const activo = itemActivo === item.id
